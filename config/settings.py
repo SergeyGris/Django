@@ -24,7 +24,13 @@ SECRET_KEY = 'django-insecure-c&l^5^1*8hbwh0nu)3jk&8k6si@+h*$vgnrw8p(&z2vlib!)_q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
+
+if DEBUG:
+    INTERNAL_IPS = [
+        "192.168.0.202",
+        "127.0.0.1",
+    ]
 
 # Application definition
 
@@ -39,6 +45,7 @@ INSTALLED_APPS = [
     'markdownify.apps.MarkdownifyConfig',
     'social_django',
     'crispy_forms',
+    'debug_toolbar',
 
     'mainapp',
     'authapp',
@@ -52,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -193,4 +201,14 @@ LOGGING = {
             "handlers": ["file"],
         },
     },
+}
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        },
+    }
 }
