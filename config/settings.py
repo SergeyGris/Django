@@ -221,8 +221,8 @@ CELERY_RESULT_BACKEND = "redis://localhost:6379"
 
 # Full list of email settings:
 #   https://docs.djangoproject.com/en/3.2/ref/settings/#email
-EMAIL_HOST = "localhost"
-EMAIL_PORT = "25"
+# EMAIL_HOST = "localhost"
+# EMAIL_PORT = "25"
 
 # For debugging: python -m smtpd -n -c DebuggingServer localhost:25
 # EMAIL_HOST_USER = "django@geekshop.local"
