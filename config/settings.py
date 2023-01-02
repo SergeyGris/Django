@@ -104,7 +104,7 @@ if ENV_TYPE == 'local':
 else:
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg',
+            'ENGINE': 'django.db.backends.postgresql',
             'NAME': 'lms',
             'USER': 'postgres',
             # 'PASSWORD': 'mypassword',
